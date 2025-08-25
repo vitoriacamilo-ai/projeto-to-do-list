@@ -17,6 +17,7 @@ def listar_tarefas_pendentes():
         print(f"{VERMELHO}{i} - {valor}.{RESET}")
 
 def marcar_concluidas():
+    listar_tarefas_pendentes()
     concluir_tarefa = int(input("Qual tarefa você concluiu: "))
     if (lista_tarefas[concluir_tarefa] in lista_tarefas):
         lista_tarefas_concluidas.append(lista_tarefas[concluir_tarefa])
@@ -45,7 +46,7 @@ def listar_tarefas_removidas():
         print(f"{i} - {valor}.")
 
 while True:
-    print("***** MENU TO-DO LIST - BFD *****")
+    print("****** MENU TO-DO LIST - BFD ******")
     print("*" * 35)
     print("1 - Adicionar tarefa")
     print("2 - Mostrar tarefas pendentes")

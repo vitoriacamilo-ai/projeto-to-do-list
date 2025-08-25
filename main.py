@@ -19,9 +19,8 @@ def listar_tarefas():
         print(f"{i}-{tarefa}")
 
 def tarefa_concluida(): 
-    print('Qual tarefa você deseja marcar como concluida? ', Lista)
-    for i, tarefa in enumerate(Lista,1):
-        print(f'{i}-{tarefa}')
+    print('Qual tarefa você deseja marcar como concluida? ')
+    listar_tarefas()
     numero=int(input('Digite o número da tarefa já concluida: '))
     iindice= numero-1
     tarefa=Lista.pop(iindice)
