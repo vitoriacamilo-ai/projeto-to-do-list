@@ -1,5 +1,11 @@
 Lista=[]
 Concluidas=[]
+
+VERMELHO = '\033[31m'
+RESET = '\033[m'
+
+print(f"{VERMELHO} este texto vai aparecer vermelho.{RESET}")
+
 def adicionar_tarefa():
     adicionar=str(input('Adicione a tarefa desejada: '))
     print('Sua tarefa ', adicionar, 'foi adicionada.')
@@ -41,7 +47,7 @@ def lista_para_o_usuario():
         print(f"{i}- {tarefa}")
 
 while True: 
-    print('Menu'.center(50))
+    print('Menu'.center(20))
     print('1- Adicionar tarefas')
     print('2- Listar tarefas')
     print('3- Concluir tarefas')
@@ -57,16 +63,17 @@ while True:
     if opcao ==1:
         adicionar_tarefa()
     elif opcao ==2:
-            listar_tarefas()
+        listar_tarefas()
     elif opcao ==3:
-                tarefa_concluida()
+        tarefa_concluida()
     elif opcao ==4:
-                  remover_tarefas()
+        remover_tarefas()
     elif opcao ==5:
-                        lista_para_o_usuario()
+        lista_para_o_usuario()
     elif opcao ==6:
-                          print('Até a próxima!') 
+        print('Até a próxima!') 
     else:
-                             print('Erro, tente novamente.')
-                             break
+        print('Erro, tente novamente.')
+        break
+
 
