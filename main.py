@@ -52,7 +52,7 @@ while True:
     print('3- Concluir tarefas')
     print('4- Remover Tarefas-')
     print('5- Lista de todas as tarefas')
-    print('6- Sair') 
+    print('0- Sair') 
 
     opcao=int(input('Escolha uma das opções acima: '))
 
@@ -69,10 +69,11 @@ while True:
         remover_tarefas()
     elif opcao ==5:
         lista_para_o_usuario()
-    elif opcao ==6:
+    elif opcao ==0:
         print('Até a próxima!') 
     else:
         print('Erro, tente novamente.')
         break
+
 
 
