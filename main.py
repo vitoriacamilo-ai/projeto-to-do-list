@@ -69,9 +69,4 @@ while True:
     else:
                              print('Erro, tente novamente.')
                              break
-                    
-adicionar_tarefa()
-adicionar_tarefa()
-tarefa_concluida()
-remover_tarefas()
-lista_para_o_usuario()
+
