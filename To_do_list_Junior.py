@@ -4,17 +4,20 @@ tarefas_removidas = []
 
 VERMELHO = '\033[31m'
 RESET = '\033[m'
+VERDE = '\033[32m'
 
 
 def add_tarefa():
     tarefa = str(input("Qual tarefa você deseja adicionar: ")).lower().strip()
     lista_tarefas.append(tarefa)
     print("Tarefa salva com sucesso!")
+    print("\n")
 
 def listar_tarefas_pendentes():
-    print(f"{VERMELHO} TAREFAS PENDENTES {RESET}")
+    print(f"{VERDE} TAREFAS PENDENTES {RESET}")
     for i, valor in enumerate(lista_tarefas):
-        print(f"{VERMELHO}{i} - {valor}.{RESET}")
+        print(f"{VERDE}{i} - {valor}.{RESET}")
+    print("\n")
 
 def marcar_concluidas():
     listar_tarefas_pendentes()
@@ -24,67 +27,75 @@ def marcar_concluidas():
         lista_tarefas.remove(lista_tarefas[concluir_tarefa])
     else:
         print("Registro não econtrado!")
+    print("\n")
 
 def remover_tarefa():
-    tarefa_remover = str(input("Qual tarefa você deseja remover: ")).lower().strip()
+    listar_tarefas_pendentes()
+    tarefa_remover = int(input("Qual tarefa você deseja remover: "))
 
-    if (tarefa_remover not in lista_tarefas):
-        print("Registro não encontrado!")
-    else:
+    if (lista_tarefas[tarefa_remover] in lista_tarefas):
+        tarefas_removidas.append(lista_tarefas[tarefa_remover])
+        lista_tarefas.remove(lista_tarefas[tarefa_remover])
         print("Registro removido com sucesso!")
-        tarefas_removidas.append(tarefa_remover)
-        lista_tarefas.remove(tarefa_remover)
+        print("\n")
+    else:
+        print("Registro não localizado!")
+        print("\n")
 
 def listar_tarefas_concluidas():
-    print("TAREFAS CONCLUÍDAS".center(20, '*'))
+    print(f"{VERDE}TAREFAS CONCLUÍDAS{RESET}")
     for i, valor in enumerate(lista_tarefas_concluidas):
-        print(f"{i} - {valor}.")
+        print(f"{VERDE}{i} - {valor}.{RESET}")
+    print("\n")
 
 def listar_tarefas_removidas():
-    print("TAREFAS REMOVIDAS".center(20, '*'))
+    print(F"{VERMELHO}TAREFAS REMOVIDAS{RESET}")
     for i, valor in enumerate(tarefas_removidas):
-        print(f"{i} - {valor}.")
+        print(f"{VERMELHO}{i} - {valor}.{RESET}")
+    print("\n")
 
-while True:
-    print("****** MENU TO-DO LIST - BFD ******")
-    print("*" * 35)
-    print("1 - Adicionar tarefa")
-    print("2 - Mostrar tarefas pendentes")
-    print("3 - Concluir tarefa")
-    print("4 - Remover tarefa")
-    print("5 - Mostrar tarefas concluídas")
-    print("6 - Mostrar tarefas removidas")
-    print("0 - Sair")
-    print('*' * 35)
+try:
+    while True:
+        print("****** MENU TO-DO LIST - BFD ******")
+        print("*" * 35)
+        print("1 - Adicionar tarefa")
+        print("2 - Mostrar tarefas pendentes")
+        print("3 - Concluir tarefa")
+        print("4 - Remover tarefa")
+        print("5 - Mostrar tarefas concluídas")
+        print("6 - Mostrar tarefas removidas")
+        print("7 - Mostrar todas as tarefas")
+        print("0 - Sair")
+        print('*' * 35)
 
-    escolha = int(input("Escolha uma opção: "))
+        escolha = int(input("Escolha uma opção: "))
 
-    if (escolha < 0 or escolha > 6):
-        print("Escolha inválida, tente novamente.")
-        continue
-    if (escolha == 1):
-        add_tarefa()
-        continue
-    if (escolha == 2):
-        listar_tarefas_pendentes()
-        continue
-    if (escolha == 3):
-        marcar_concluidas()
-        continue
-    if (escolha == 4 ):
-        remover_tarefa()
-    if (escolha == 5):
-        listar_tarefas_concluidas()
-    if escolha == 6:
-        print("TAREFAS REMOVIDAS".center(20, '*'))
-        listar_tarefas_removidas()
-        continue
-    if (escolha == 0):
-        print("Saindo...")
-        break
+        if (escolha < 0 or escolha > 7):
+            print("Escolha inválida, tente novamente.")
+        elif (escolha == 1):
+            add_tarefa()
+        elif (escolha == 2):
+            listar_tarefas_pendentes()
+        elif (escolha == 3):
+            marcar_concluidas()
+        elif (escolha == 4 ):
+            remover_tarefa()
+        elif (escolha == 5):
+            listar_tarefas_concluidas()
+        elif escolha == 6:
+            listar_tarefas_removidas()
+        elif (escolha == 7):
+            print("Listar todas as tarefas")
+            listar_tarefas_pendentes()
+            listar_tarefas_concluidas()
+            listar_tarefas_removidas()
+        elif (escolha == 0):
+            print("Saindo...")
+            break
+
+except ValueError:
+    print("Erro! Digite um número inteiro, ou 0 para sair.")
 
 #FALTA COMENTAR
-#TESTAR TRY - EXCEPTION
 #TESTAR SWITCH CASE
 #FALTA DOCUMENTAÇÃO
-#REMOVER AS CONCLUIDAS DA LISTA
